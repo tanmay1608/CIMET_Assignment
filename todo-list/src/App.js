@@ -13,6 +13,7 @@ const App = () => {
 
   useEffect(() => {
     const localList = JSON.parse(localStorage.getItem("todoList"));
+    if(!localList) return;
     if (localList.length !== 0) setTodoList(localList);
   }, []);
 
