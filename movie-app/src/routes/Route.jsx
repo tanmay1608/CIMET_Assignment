@@ -8,6 +8,7 @@ import ShowsWrapper from "../components/ShowsWrapper";
 import ExploreShows from "../pages/ExploreShows";
 import SingleShow from "../pages/SingleShow";
 import {fetchData} from "../loaders/fetchData";
+import { fetchSingleMovie } from "../loaders/fetchSingleMovie";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,7 @@ const router = createBrowserRouter([
           {
             path: ":movieId",
             element: <SingleMovie />,
+            loader: (movieId)=> fetchSingleMovie(movieId)
           },
         ],
       },
