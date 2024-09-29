@@ -2,7 +2,7 @@ import { useState } from "react";
 import InfiniteScroll from "../components/InfiniteScroll";
 import { useLoaderData } from "react-router-dom";
 import ExploreHeader from "../components/ExploreHeader";
-import { PageContext } from "../utils/pageContext";
+
 
 const ExploreMovies = () => {
   const data = useLoaderData();
@@ -27,7 +27,7 @@ const ExploreMovies = () => {
     setSortBy(e.target.value);
   }
   return (
-    <div>
+    <div className="bg-lightDarker min-h-screen">
       <ExploreHeader genreList={data} genre={genre} sortBy={sortBy} handleSelectChange={handleSelectChange} handleParamChange={handleParamChange}/>
       
       

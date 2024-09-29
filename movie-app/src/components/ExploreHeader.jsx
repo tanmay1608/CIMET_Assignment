@@ -1,3 +1,6 @@
+
+
+
 const ExploreHeader = ({
   genreList,
   genre,
