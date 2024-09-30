@@ -1,0 +1,83 @@
+.app{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-container{
+  width: 270px;
+  height: 400px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+ border-radius: 10px;
+ border:rgb(108, 222, 108) 2px solid
+}
+
+.bottom-section{
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+input{
+  width: 85%;
+  padding: 10px;
+  outline: none;
+  border:none;
+  border-bottom: 2px gray solid;
+}
+
+input:focus{
+  border-bottom: 2px rgb(108, 222, 108) solid;
+}
+
+button{
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background-color: rgb(108, 222, 108);
+  color: white;
+}
+
+img{
+  width: 250px;
+  padding: 10px;
+  
+}
+
+.select-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+  position: absolute;
+  top:10px
+}
+
+.option-container{
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 5px;
+  
+}
+
+.option{
+padding: 5px 2.5px 5px 2.5px;
+border: 1px rgb(209, 208, 208) solid;
+margin:0;
+border-top: 0;
+text-align: center;
+cursor: pointer;
+}
+
+.option:first-child{
+  border-top: 1px rgb(209, 208, 208) solid;
+  background-color: rgb(199, 197, 197);
+}
