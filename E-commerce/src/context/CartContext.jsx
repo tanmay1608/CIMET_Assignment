@@ -9,7 +9,6 @@ export const CartContextProvider = ({ children }) => {
   const [currencyData, setCurrencyData] = useState([]);
   const [currentCurrency, setCurrentCurrency] = useState("AUD");
   const [currentCurrencyValue, setCurrentCurrencyValue] = useState(1);
-  const [previousCurrencyValue, setPreviousCurrencyValue] = useState(1); 
 
   useEffect(() => {
     try {
@@ -19,9 +18,23 @@ export const CartContextProvider = ({ children }) => {
       };
       fetchCurrencyData();
     } catch (e) {
-      setCurrencyData([]);
+      setCurrencyData([{ AUD: 1 }, { INR: 57.85 }, { USD: 0.68 }]);
     }
   }, []);
+
+  useEffect(() => {
+    const cartItem = localStorage.getItem("cartItem");
+
+    if (cartItem) {
+      setCart(JSON.parse(cartItem));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (cart.length > 0) {
+      localStorage.setItem("cartItem", JSON.stringify(cart));
+    }
+  }, [cart]);
 
   const addToCart = (product) => {
     setCart((prev) => [...prev, { ...product, quantity: 1 }]);
@@ -44,26 +57,20 @@ export const CartContextProvider = ({ children }) => {
   };
 
   const handleConverisonOption = (currency) => {
-   
-  // Get the conversion values
-  const newValue = currencyData[currency]; // Rate for the new currency
-  const preValue = currencyData[currentCurrency]; // Rate for the current currency
+    const newValue = currencyData[currency];
+    const preValue = currencyData[currentCurrency];
 
-  // Update the previous currency and value before changing the current one
-  
-  setPreviousCurrencyValue(preValue);
+    setCurrentCurrency(currency);
+    setCurrentCurrencyValue(newValue);
 
-  // Set the new current currency and its value
-  setCurrentCurrency(currency);
-  setCurrentCurrencyValue(newValue);
-
-  // Update the prices in the cart
-  setCart((prev) =>
-    prev.map((cartElement) => ({
-      ...cartElement,
-      price: parseFloat(((cartElement.price * newValue) / preValue).toFixed(2)), // Convert and round to 2 decimal places
-    }))
-  );
+    setCart((prev) =>
+      prev.map((cartElement) => ({
+        ...cartElement,
+        price: parseFloat(
+          ((cartElement.price * newValue) / preValue).toFixed(2)
+        ),
+      }))
+    );
   };
 
   return (
@@ -77,7 +84,6 @@ export const CartContextProvider = ({ children }) => {
         handleConverisonOption,
         currentCurrency,
         currentCurrencyValue,
-        previousCurrencyValue
       }}
     >
       {children}

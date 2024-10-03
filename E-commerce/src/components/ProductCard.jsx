@@ -4,7 +4,7 @@ import { CartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
-  const { cart, addToCart } = useContext(CartContext);
+  const { cart, addToCart,currentCurrency,currentCurrencyValue  } = useContext(CartContext);
 
   const isProductPresent = cart.find((cartProduct) => cartProduct.id === product.id);
 
@@ -17,6 +17,7 @@ const ProductCard = ({ product }) => {
           alt={product.title}
         />
         <p className="inter-bold text-center p-4">{product.title}</p>
+        <p className="inter-medium text-center p-4">{currentCurrency !== "AUD" ? currentCurrency+" "+(product.price*currentCurrencyValue).toFixed(2) : currentCurrency+" "+product.price}</p>
       </Link>
 
       {!isProductPresent ? (

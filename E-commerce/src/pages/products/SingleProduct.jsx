@@ -5,9 +5,9 @@ import CustomButtons from "../../components/customButtons";
 
 const SingleProduct = () => {
   const productDetails = useLoaderData();
-  const { cart, addToCart,currentCurrency,currentCurrencyValue,previousCurrencyValue } = useContext(CartContext);
+  const { cart, addToCart,currentCurrency,currentCurrencyValue } = useContext(CartContext);
 
-  console.log(currentCurrencyValue,previousCurrencyValue);
+
  
   const isProductPresent = cart.find((cartProduct) => cartProduct.id === productDetails.id);
 

@@ -5,11 +5,7 @@ import NavigationItem from "./NavigationItem";
 
 const Header = () => {
   const { cart,currencyData,handleConverisonOption } = useContext(CartContext);
- 
-
   
- console.log(cart)
-
   return (
     <header className="flex justify-between p-4 bg-dark-gray items-center text-white inter-medium ">
       <h1 className="squada-one-regular">

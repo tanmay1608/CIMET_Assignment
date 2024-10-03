@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom"
 const NavigationItem = ({route}) => {
     const location = useLocation();
   return (
-    <Link to={`/${route.toLowerCase()}`}>
+    <Link to={`/${route.toLowerCase()}${route === "Blogs" ?"?page=1": ''}`}>
     <li
       className={`py-1 px-2 ${
         location.pathname === `/${route.toLowerCase()}`
