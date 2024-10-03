@@ -1,12 +1,15 @@
+import FeaturedProdcuts from "../components/FeaturedProdcuts"
+import ImageSlider from "../components/ImageSlider"
 
 const Home = () => {
 
-    console.log("inside")
+    
   return (
-    <div>
-      This is home
-      fdlgldkdldk
-    </div>
+    <>
+     <ImageSlider/>
+     <FeaturedProdcuts/>
+    </>
+   
   )
 }
 
